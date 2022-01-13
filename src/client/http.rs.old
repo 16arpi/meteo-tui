@@ -1,0 +1,47 @@
+use std::collections::HashMap;
+use std::future::Future;
+
+use hyper::Client;
+use hyper::Request;
+use hyper::Method;
+use hyper::Uri;
+use hyper::Body;
+use hyper::body;
+
+#[tokio::main]
+pub async fn request(base_url: String, sub_dir: String, arguments: HashMap<String, String>) -> Result<String, Box<dyn std::error::Error + Send + Sync>> {
+    // URL + /SOUS_REPERTOIRE/
+    let mut url_str = base_url+sub_dir.chars().as_str()+"/";
+    
+    // Pour chaque argument, l'ajouter à l'URL
+    if arguments.len() > 0 {
+        url_str += "?";
+        let c = 0;
+        for i in arguments {
+            if c > 0 {
+                url_str += "&";
+            }
+            url_str += i.0.chars().as_str();
+            url_str += "=";
+            url_str += i.1.chars().as_str();
+
+        }
+    }
+
+    // Transformation de l'URL chaîne de caractères en objet URI
+    print!("{}", url_str.clone());
+    let complete_url = url_str.parse::<Uri>()?;
+
+    // Requête HTTP pour récupérer le code JSON
+    let meteo_http_client = Client::new();
+    let request = Request::builder()
+        .method(Method::GET)
+        .uri(complete_url)
+        .header("content-type", "application/json")
+        .body(Body::empty())?;
+    
+    let resultat = meteo_http_client.request(request).await?;
+    let body = resultat.into_body();
+    let octets = body::to_bytes(body).await?;
+    Ok(String::from_utf8(octets.to_vec()).expect("erreur"))
+}
