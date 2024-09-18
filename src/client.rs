@@ -20,9 +20,9 @@ impl MeteoFranceAPI {
     pub fn get_JSON_place(&self, code_postal: i32) -> String {
         let mut arguments = HashMap::new();
         arguments.insert(String::from("q"), String::from(code_postal.to_string()));
-        arguments.insert(String::from("token"), String::from(self.token.clone()));
+        arguments.insert(String::from("token"), String::from(self.token));
         return http::request(
-            String::from(self.base_url.clone()),
+            String::from(self.base_url),
             String::from("places"),
             arguments,
         );
@@ -38,9 +38,9 @@ impl MeteoFranceAPI {
                     let mut arguments = HashMap::new();
                     arguments.insert(String::from("lat"), lat.to_string());
                     arguments.insert(String::from("lon"), lon.to_string());
-                    arguments.insert(String::from("token"), String::from(self.token.clone()));
+                    arguments.insert(String::from("token"), String::from(self.token));
                     return Ok(http::request(
-                        String::from(self.base_url.clone()),
+                        String::from(self.base_url),
                         String::from("forecast"),
                         arguments,
                     ));

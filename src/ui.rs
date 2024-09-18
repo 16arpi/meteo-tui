@@ -785,13 +785,13 @@ fn onglet_carte<B: Backend>(f: &mut Frame<B>, meteo_app: &mut MeteoApp, frame: R
             let previsions = app_copy.previsions_france.clone();
             let ville_selected = app_copy.previsions_france_selected;
             for p in previsions {
-                let color = if ville_selected == i {
+                let _color = if ville_selected == i {
                     Color::LightMagenta
                 } else {
                     Color::White
                 };
 
-                ctx.print(p.x.into(), p.y.into(), p.name, color);
+                ctx.print(p.x.into(), p.y.into(), p.name);
 
                 i += 1;
             }
