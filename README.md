@@ -32,7 +32,7 @@ Le programme utilise les dépendances suivantes :
 
 - [Serde JSON](https://github.com/serde-rs/json) pour transformer les données Météo France en structures Rust.
 - [Reqwest](https://github.com/seanmonstar/reqwest) pour exécuter des requêtes HTTP et récupèrer le contenu de pages web.
-- [Crossterm](https://github.com/crossterm-rs/crossterm) et [tui-rs](https://github.com/fdehau/tui-rs) pour l'interface utilisateur dans le terminal.
+- [Crossterm](https://github.com/crossterm-rs/crossterm) et [ratatui](https://github.com/ratatui/ratatui) pour l'interface utilisateur dans le terminal.
 - [Confy](https://github.com/rust-cli/confy) pour sauvegarder la configuration du programme.  
 - [Chrono](https://github.com/chronotope/chrono) pour la manipulation des dates et des heures.
 
