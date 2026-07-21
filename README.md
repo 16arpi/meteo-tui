@@ -9,7 +9,7 @@ Programme graphique en ligne de commande qui permet de consulter les prévisions
 Pour installer Météo TUI, téléchargez l'archive, rendez vous dans le dossier d'extraction depuis le terminal puis compilez et installez le programme à l'aide des commandes suivantes :
 
 ```bash
-$ cargo install --path .
+$ cargo install meteo
 $ meteo
 ```
 
