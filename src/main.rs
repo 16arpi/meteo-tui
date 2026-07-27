@@ -45,7 +45,7 @@ fn main() {
 }
 
 fn help() {
-    print!(
+    println!(
         "Commandes possibles :
       meteo                   Ouvrir les prévisions météo de la ville par défaut
       meteo carte             Ouvrir les prévisions météo des principales villes de France
